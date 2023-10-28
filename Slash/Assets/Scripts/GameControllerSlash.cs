@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameControllerSlash : MonoBehaviour
 {
     [SerializeField] private GameObject fillPrefab;
     [SerializeField] private Transform[] allCells;
+
+    public static Action<string> slide;
     
     // Start is called before the first frame update
     void Start()
@@ -20,19 +23,36 @@ public class GameControllerSlash : MonoBehaviour
         {
             SpawnFill();
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            slide("w");
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            slide("d");
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            slide("s");
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            slide("a");
+        }
+        
     }
 
     public void SpawnFill()
     {
-        int wichSpawn = Random.Range(0, allCells.Length);
+        int wichSpawn = UnityEngine.Random.Range(0, allCells.Length);
         if (allCells[wichSpawn].childCount != 0)
         {
             Debug.Log(allCells[wichSpawn].name + "is already filled");
             SpawnFill();
             return;
         }
-        float chance = Random.Range(0f, 1f);
-        
+        float chance = UnityEngine.Random.Range(0f, 1f);
         Debug.Log(chance);
         if (chance < .2f)
         {
@@ -43,12 +63,18 @@ public class GameControllerSlash : MonoBehaviour
             
             GameObject tempFill = Instantiate(fillPrefab, allCells[wichSpawn]);
             Debug.Log(2);
+            Fill tempFillComp = tempFill.GetComponent<Fill>();
+            allCells[wichSpawn].GetComponent<Cell>().fill = tempFillComp;
+            tempFillComp.FillValueUpdate(2);
         }
         else
         {
             
             GameObject tempFill = Instantiate(fillPrefab, allCells[wichSpawn]);
             Debug.Log(4);
+            Fill tempFillComp = tempFill.GetComponent<Fill>();
+            allCells[wichSpawn].GetComponent<Cell>().fill = tempFillComp;
+            tempFillComp.FillValueUpdate(4);
         }
     }
 }
