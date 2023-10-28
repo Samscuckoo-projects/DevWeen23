@@ -24,7 +24,15 @@ public class GameControllerSlash : MonoBehaviour
 
     public void SpawnFill()
     {
+        int wichSpawn = Random.Range(0, allCells.Length);
+        if (allCells[wichSpawn].childCount != 0)
+        {
+            Debug.Log(allCells[wichSpawn].name + "is already filled");
+            SpawnFill();
+            return;
+        }
         float chance = Random.Range(0f, 1f);
+        
         Debug.Log(chance);
         if (chance < .2f)
         {
@@ -32,13 +40,13 @@ public class GameControllerSlash : MonoBehaviour
         }
         else if (chance<.8f)
         {
-            int wichSpawn = Random.Range(0, allCells.Length);
+            
             GameObject tempFill = Instantiate(fillPrefab, allCells[wichSpawn]);
             Debug.Log(2);
         }
         else
         {
-            int wichSpawn = Random.Range(0, allCells.Length);
+            
             GameObject tempFill = Instantiate(fillPrefab, allCells[wichSpawn]);
             Debug.Log(4);
         }
