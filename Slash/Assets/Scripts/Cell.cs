@@ -6,6 +6,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
 
+    public bool isKiller = false;
     public Cell right;
     public Cell left;
     public Cell up;
@@ -68,6 +69,13 @@ public class Cell : MonoBehaviour
             Cell currentCell = this;
             SlideLeft(currentCell);
         }
+
+        GameControllerSlash.ticker++;
+        if (GameControllerSlash.ticker == 4)
+        {
+            GameControllerSlash.instance.SpawnFill();
+        }
+
     }
 
     void SlideUp(Cell currentCell)
@@ -85,12 +93,12 @@ public class Cell : MonoBehaviour
             {
                 if (currentCell.fill.value == nextCell.fill.value)
                 {
-                   Debug.Log("double");
+                   nextCell.fill.Kill();
                    nextCell.fill.transform.parent = currentCell.transform;
                    currentCell.fill = nextCell.fill;
                    nextCell.fill = null;
                 }
-                else
+                else if(currentCell.down.fill != nextCell.fill)
                 {
                     Debug.Log("!double");
                     nextCell.fill.transform.parent = currentCell.down.transform;
@@ -136,12 +144,12 @@ public class Cell : MonoBehaviour
             {
                 if (currentCell.fill.value == nextCell.fill.value)
                 {
-                    Debug.Log("double");
+                    nextCell.fill.Kill();
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
                 }
-                else
+                else if(currentCell.left.fill != nextCell.fill)
                 {
                     Debug.Log("!double");
                     nextCell.fill.transform.parent = currentCell.left.transform;
@@ -187,12 +195,12 @@ public class Cell : MonoBehaviour
             {
                 if (currentCell.fill.value == nextCell.fill.value)
                 {
-                    Debug.Log("double");
+                    nextCell.fill.Kill();
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
                 }
-                else
+                else if(currentCell.up.fill != nextCell.fill)
                 {
                     Debug.Log("!double");
                     nextCell.fill.transform.parent = currentCell.up.transform;
@@ -238,12 +246,12 @@ public class Cell : MonoBehaviour
             {
                 if (currentCell.fill.value == nextCell.fill.value)
                 {
-                    Debug.Log("double");
+                    nextCell.fill.Kill();
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
                 }
-                else
+                else if(currentCell.right.fill != nextCell.fill)
                 {
                     Debug.Log("!double");
                     nextCell.fill.transform.parent = currentCell.right.transform;
