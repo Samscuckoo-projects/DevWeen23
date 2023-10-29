@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Fill : MonoBehaviour
@@ -47,11 +48,12 @@ public class Fill : MonoBehaviour
     public void Kill()
     {
         Debug.Log("matei");
+        GameControllerSlash.instance.WinningCheck();
     }
 
     public void EndEvil()
     {
         Debug.Log("Evil ended");
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
