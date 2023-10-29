@@ -76,19 +76,9 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (currentCell.fill.value == 1)
-                {
-                    if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.up.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.up.transform;
-                            nextCell.up.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.up;
-                    }
-                    else if (nextCell.fill.value == 6)
+                if (currentCell.fill.value == 1){
+
+                    if (nextCell.fill.value is 6 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
@@ -96,38 +86,23 @@ public class Cell : MonoBehaviour
                     }
                     else if (nextCell.fill.value == 8)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
-                        
+
                     }
+
                 }
-                else if (currentCell.fill.value == 2 ||
-                         currentCell.fill.value == 8 ||
-                         currentCell.fill.value == 9 ||
-                         currentCell.fill.value == 10)
+                else if (currentCell.fill.value is 2 or 8 or 9 or 10)
                 {
-                    if (nextCell.fill.value == 1 ||
-                        nextCell.fill.value == 6 ||
-                        nextCell.fill.value == 8)
+                    if (nextCell.fill.value is 1 or 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.up.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.up.transform;
-                            nextCell.up.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.up;
-                    }
                 }
-                else if (currentCell.fill.value == 4 ||
-                         currentCell.fill.value == 6)
+                else if (currentCell.fill.value is 4 or 6)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -136,18 +111,7 @@ public class Cell : MonoBehaviour
                         currentCell.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.up.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.up.transform;
-                            nextCell.up.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.up;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
@@ -159,22 +123,11 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.up.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.up.transform;
-                            nextCell.up.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.up;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
@@ -190,18 +143,7 @@ public class Cell : MonoBehaviour
                         currentCell.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.up.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.up.transform;
-                            nextCell.up.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.up;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
@@ -212,23 +154,12 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.up.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.up.transform;
-                            nextCell.up.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.up;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
@@ -247,22 +178,12 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (nextCell.fill.value == 6 || nextCell.fill.value == 8 || nextCell.fill.value == 1)
+                if (nextCell.fill.value is 6 or 8 or 1 or 2)
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
                     SlideUp(currentCell);
-                }
-                else if (nextCell.fill.value == 2)
-                {
-                    if (nextCell.up.fill == null)
-                    {
-                        nextCell.fill.transform.parent = nextCell.up.transform;
-                        nextCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                    currentCell = nextCell.up;
                 }
             }
         }
@@ -282,19 +203,9 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (currentCell.fill.value == 1)
-                {
-                    if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.right.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.right.transform;
-                            nextCell.right.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.right;
-                    }
-                    else if (nextCell.fill.value == 6)
+                if (currentCell.fill.value == 1){
+
+                    if (nextCell.fill.value is 6 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
@@ -302,38 +213,23 @@ public class Cell : MonoBehaviour
                     }
                     else if (nextCell.fill.value == 8)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
-                        
+
                     }
+
                 }
-                else if (currentCell.fill.value == 2 ||
-                         currentCell.fill.value == 8 ||
-                         currentCell.fill.value == 9 ||
-                         currentCell.fill.value == 10)
+                else if (currentCell.fill.value is 2 or 8 or 9 or 10)
                 {
-                    if (nextCell.fill.value == 1 ||
-                        nextCell.fill.value == 6 ||
-                        nextCell.fill.value == 8)
+                    if (nextCell.fill.value is 1 or 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.right.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.right.transform;
-                            nextCell.right.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.right;
-                    }
                 }
-                else if (currentCell.fill.value == 4 ||
-                         currentCell.fill.value == 6)
+                else if (currentCell.fill.value is 4 or 6)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -342,18 +238,7 @@ public class Cell : MonoBehaviour
                         currentCell.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.right.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.right.transform;
-                            nextCell.right.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.right;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
@@ -365,49 +250,11 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.right.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.right.transform;
-                            nextCell.right.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.right;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
-                    {
-                        nextCell.fill.transform.parent = currentCell.left.transform;
-                        currentCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                }
-                else if (currentCell.fill.value == 5)
-                {
-                    if (nextCell.fill.value == 1)
-                    {
-                        nextCell.fill.Kill();
-                        nextCell.fill.transform.parent = currentCell.transform;
-                        currentCell.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.right.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.right.transform;
-                            nextCell.right.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.right;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
@@ -418,23 +265,28 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        nextCell.fill.Kill();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        currentCell.fill = nextCell.fill;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value is 6 or 8 or 2)
+                    {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
+                }
+                else if (currentCell.fill.value == 5)
+                {
+                    if (nextCell.fill.value == 1)
                     {
-                        if (nextCell.right.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.right.transform;
-                            nextCell.right.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.right;
+                        StartCoroutine(nextCell.fill.EndEvil());
+                        nextCell.fill.transform.parent = currentCell.left.transform;
+                        currentCell.left.fill = nextCell.fill;
+                        nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
@@ -453,22 +305,12 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (nextCell.fill.value == 6 || nextCell.fill.value == 8 || nextCell.fill.value == 1)
+                if (nextCell.fill.value is 6 or 8 or 1 or 2)
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
                     SlideRight(currentCell);
-                }
-                else if (nextCell.fill.value == 2)
-                {
-                    if (nextCell.right.fill == null)
-                    {
-                        nextCell.fill.transform.parent = nextCell.right.transform;
-                        nextCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                    currentCell = nextCell.right;
                 }
             }
         }
@@ -488,19 +330,9 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (currentCell.fill.value == 1)
-                {
-                    if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.down.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.down.transform;
-                            nextCell.down.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.down;
-                    }
-                    else if (nextCell.fill.value == 6)
+                if (currentCell.fill.value == 1){
+
+                    if (nextCell.fill.value is 6 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
@@ -508,38 +340,23 @@ public class Cell : MonoBehaviour
                     }
                     else if (nextCell.fill.value == 8)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
-                        
+
                     }
+
                 }
-                else if (currentCell.fill.value == 2 ||
-                         currentCell.fill.value == 8 ||
-                         currentCell.fill.value == 9 ||
-                         currentCell.fill.value == 10)
+                else if (currentCell.fill.value is 2 or 8 or 9 or 10)
                 {
-                    if (nextCell.fill.value == 1 ||
-                        nextCell.fill.value == 6 ||
-                        nextCell.fill.value == 8)
+                    if (nextCell.fill.value is 1 or 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.down.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.down.transform;
-                            nextCell.down.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.down;
-                    }
                 }
-                else if (currentCell.fill.value == 4 ||
-                         currentCell.fill.value == 6)
+                else if (currentCell.fill.value is 4 or 6)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -548,18 +365,7 @@ public class Cell : MonoBehaviour
                         currentCell.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.down.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.down.transform;
-                            nextCell.down.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.down;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
@@ -571,49 +377,11 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.down.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.down.transform;
-                            nextCell.down.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.down;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
-                    {
-                        nextCell.fill.transform.parent = currentCell.up.transform;
-                        currentCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                }
-                else if (currentCell.fill.value == 3)
-                {
-                    if (nextCell.fill.value == 1)
-                    {
-                        nextCell.fill.Kill();
-                        nextCell.fill.transform.parent = currentCell.transform;
-                        currentCell.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.down.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.down.transform;
-                            nextCell.down.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.down;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
@@ -624,23 +392,28 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        nextCell.fill.Kill();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        currentCell.fill = nextCell.fill;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value is 6 or 8 or 2)
+                    {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
+                }
+                else if (currentCell.fill.value == 3)
+                {
+                    if (nextCell.fill.value == 1)
                     {
-                        if (nextCell.down.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.down.transform;
-                            nextCell.down.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.down;
+                        StartCoroutine(nextCell.fill.EndEvil());
+                        nextCell.fill.transform.parent = currentCell.up.transform;
+                        currentCell.up.fill = nextCell.fill;
+                        nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
@@ -659,22 +432,12 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (nextCell.fill.value == 6 || nextCell.fill.value == 8 || nextCell.fill.value == 1)
+                if (nextCell.fill.value is 6 or 8 or 1 or 2)
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
                     SlideDown(currentCell);
-                }
-                else if (nextCell.fill.value == 2)
-                {
-                    if (nextCell.down.fill == null)
-                    {
-                        nextCell.fill.transform.parent = nextCell.down.transform;
-                        nextCell.down.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                    currentCell = nextCell.down;
                 }
             }
         }
@@ -694,19 +457,9 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (currentCell.fill.value == 1)
-                {
-                    if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.left.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.left.transform;
-                            nextCell.left.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.left;
-                    }
-                    else if (nextCell.fill.value == 6)
+                if (currentCell.fill.value == 1){
+
+                    if (nextCell.fill.value is 6 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
@@ -714,38 +467,23 @@ public class Cell : MonoBehaviour
                     }
                     else if (nextCell.fill.value == 8)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
-                        
+
                     }
+
                 }
-                else if (currentCell.fill.value == 2 ||
-                         currentCell.fill.value == 8 ||
-                         currentCell.fill.value == 9 ||
-                         currentCell.fill.value == 10)
+                else if (currentCell.fill.value is 2 or 8 or 9 or 10)
                 {
-                    if (nextCell.fill.value == 1 ||
-                        nextCell.fill.value == 6 ||
-                        nextCell.fill.value == 8)
+                    if (nextCell.fill.value is 1 or 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.left.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.left.transform;
-                            nextCell.left.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.left;
-                    }
                 }
-                else if (currentCell.fill.value == 4 ||
-                         currentCell.fill.value == 6)
+                else if (currentCell.fill.value is 4 or 6)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -754,18 +492,7 @@ public class Cell : MonoBehaviour
                         currentCell.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.left.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.left.transform;
-                            nextCell.left.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.left;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
@@ -777,49 +504,11 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        StartCoroutine(nextCell.fill.EndEvil());
                         nextCell.fill.transform.parent = currentCell.transform;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.left.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.left.transform;
-                            nextCell.left.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.left;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
-                    {
-                        nextCell.fill.transform.parent = currentCell.right.transform;
-                        currentCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                }
-                else if (currentCell.fill.value == 5)
-                {
-                    if (nextCell.fill.value == 1)
-                    {
-                        nextCell.fill.Kill();
-                        nextCell.fill.transform.parent = currentCell.transform;
-                        currentCell.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                    else if (nextCell.fill.value == 2)
-                    {
-                        if (nextCell.left.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.left.transform;
-                            nextCell.left.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.left;
-                    }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
@@ -830,23 +519,28 @@ public class Cell : MonoBehaviour
                 {
                     if (nextCell.fill.value == 1)
                     {
-                        nextCell.fill.EndEvil();
+                        nextCell.fill.Kill();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        currentCell.fill = nextCell.fill;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value is 6 or 8 or 2)
+                    {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
                         nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 2)
+                }
+                else if (currentCell.fill.value == 5)
+                {
+                    if (nextCell.fill.value == 1)
                     {
-                        if (nextCell.left.fill == null)
-                        {
-                            nextCell.fill.transform.parent = nextCell.left.transform;
-                            nextCell.left.fill = nextCell.fill;
-                            nextCell.fill = null;
-                        }
-                        currentCell = nextCell.left;
+                        StartCoroutine(nextCell.fill.EndEvil());
+                        nextCell.fill.transform.parent = currentCell.right.transform;
+                        currentCell.right.fill = nextCell.fill;
+                        nextCell.fill = null;
                     }
-                    else if (nextCell.fill.value == 6 ||
-                             nextCell.fill.value == 8)
+                    else if (nextCell.fill.value is 6 or 8 or 2)
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
@@ -865,22 +559,12 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (nextCell.fill.value == 6 || nextCell.fill.value == 8 || nextCell.fill.value == 1)
+                if (nextCell.fill.value is 6 or 8 or 1 or 2)
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
                     SlideLeft(currentCell);
-                }
-                else if (nextCell.fill.value == 2)
-                {
-                    if (nextCell.left.fill == null)
-                    {
-                        nextCell.fill.transform.parent = nextCell.left.transform;
-                        nextCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
-                    }
-                    currentCell = nextCell.left;
                 }
             }
         }

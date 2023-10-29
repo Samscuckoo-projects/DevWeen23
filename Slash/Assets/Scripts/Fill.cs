@@ -51,8 +51,9 @@ public class Fill : MonoBehaviour
         GameControllerSlash.instance.WinningCheck();
     }
 
-    public void EndEvil()
+    public IEnumerator EndEvil()
     {
+        yield return new WaitForSeconds(1);
         Debug.Log("Evil ended");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
