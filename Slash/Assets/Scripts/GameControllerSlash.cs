@@ -33,12 +33,6 @@ public class GameControllerSlash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ticker = 0;
-            SpawnFill();
-        }
-
         if (Input.GetKeyDown(KeyCode.W))
         {
             ticker = 0;
@@ -68,56 +62,15 @@ public class GameControllerSlash : MonoBehaviour
             return;
         }
     }
-
-    public void SpawnFill()
-    {
-        int wichSpawn = UnityEngine.Random.Range(0, allCells.Length);
-        if (allCells[wichSpawn].childCount != 0)
-        {
-            Debug.Log(allCells[wichSpawn].name + "is already filled");
-            SpawnFill();
-            return;
-        }
-        float chance = UnityEngine.Random.Range(0f, 1f);
-        Debug.Log(chance);
-        if (chance < .2f)
-        {
-            return;
-        }
-        else if (chance<.8f)
-        {
-            
-            GameObject tempFill = Instantiate(fillPrefab, allCells[wichSpawn]);
-            Debug.Log(2);
-            Fill tempFillComp = tempFill.GetComponent<Fill>();
-            allCells[wichSpawn].GetComponent<Cell>().fill = tempFillComp;
-            tempFillComp.FillValueUpdate(2);
-        }
-        else
-        {
-            
-            GameObject tempFill = Instantiate(fillPrefab, allCells[wichSpawn]);
-            Debug.Log(4);
-            Fill tempFillComp = tempFill.GetComponent<Fill>();
-            allCells[wichSpawn].GetComponent<Cell>().fill = tempFillComp;
-            tempFillComp.FillValueUpdate(4);
-        }
-    }
-    
     public void StartSpawnFill()
     {
-        int wichSpawn = UnityEngine.Random.Range(0, allCells.Length);
-        if (allCells[wichSpawn].childCount != 0)
+        foreach (Transform cell in allCells)
         {
-            Debug.Log(allCells[wichSpawn].name + "is already filled");
-            SpawnFill();
-            return;
+            if (cell.childCount != 0)
+            {
+                Fill tempFillComp = cell.GetChild(0).GetComponent<Fill>();
+                cell.GetComponent<Cell>().fill = tempFillComp;
+            }
         }
-        GameObject tempFill = Instantiate(fillPrefab, allCells[wichSpawn]);
-        Debug.Log(2);
-        Fill tempFillComp = tempFill.GetComponent<Fill>();
-        allCells[wichSpawn].GetComponent<Cell>().fill = tempFillComp;
-        tempFillComp.FillValueUpdate(2);
-        
     }
 }

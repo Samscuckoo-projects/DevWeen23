@@ -69,13 +69,6 @@ public class Cell : MonoBehaviour
             Cell currentCell = this;
             SlideLeft(currentCell);
         }
-
-        GameControllerSlash.ticker++;
-        if (GameControllerSlash.ticker == 4)
-        {
-            GameControllerSlash.instance.SpawnFill();
-        }
-
     }
 
     void SlideUp(Cell currentCell)
