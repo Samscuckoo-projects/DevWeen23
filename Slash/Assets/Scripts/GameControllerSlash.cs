@@ -11,6 +11,7 @@ public class GameControllerSlash : MonoBehaviour
     [SerializeField] private Transform[] allCells;
 
     public static Action<string> slide;
+    public string lastMove;
 
     [SerializeField] private GameObject winPanel;
 
@@ -34,21 +35,40 @@ public class GameControllerSlash : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
+            if (lastMove == "w")
+            {
+                return;
+            }
+            lastMove = "w";
             slide("w");
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            if (lastMove == "d")
+            {
+                return;
+            }
+            lastMove = "d";
             slide("d");
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
+            if (lastMove == "s")
+            {
+                return;
+            }
+            lastMove = "s";
             slide("s");
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            if (lastMove == "a")
+            {
+                return;
+            }
+            lastMove = "a";
             slide("a");
         }
-        
     }
 
     public void WinningCheck(int vitimas)

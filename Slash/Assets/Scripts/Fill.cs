@@ -52,5 +52,6 @@ public class Fill : MonoBehaviour
     public void EndEvil()
     {
         Debug.Log("Evil ended");
+        
     }
 }
