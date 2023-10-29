@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3852571003158899981}
   - component: {fileID: -1243540265447713903}
   m_Layer: 5
-  m_Name: FillPrefab
+  m_Name: Armadilha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,6 +223,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f670357f608ab94984835bf900ac3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
-  valueDisplay: {fileID: 5932185150655665556}
+  value: 7
   speed: 1500
