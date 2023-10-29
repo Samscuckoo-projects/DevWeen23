@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameControllerSlash : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class GameControllerSlash : MonoBehaviour
     [SerializeField] private Transform[] allCells;
 
     public static Action<string> slide;
+    public string lastMove;
 
     [SerializeField] private GameObject winPanel;
-
     private bool hasWon;
+
+    private int vitimas;
+    
 
     private void OnEnable()
     {
@@ -26,7 +30,6 @@ public class GameControllerSlash : MonoBehaviour
     void Start()
     {
         StartSpawnFill();
-        StartSpawnFill();
     }
 
     // Update is called once per frame
@@ -34,30 +37,67 @@ public class GameControllerSlash : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
+            if (lastMove == "w")
+            {
+                return;
+            }
+            lastMove = "w";
             slide("w");
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            if (lastMove == "d")
+            {
+                return;
+            }
+            lastMove = "d";
             slide("d");
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
+            if (lastMove == "s")
+            {
+                return;
+            }
+            lastMove = "s";
             slide("s");
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            if (lastMove == "a")
+            {
+                return;
+            }
+            lastMove = "a";
             slide("a");
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
-    public void WinningCheck(int vitimas)
+    public void WinningCheck()
     {
+        vitimas--;
         if (hasWon)
         {
             return;
         }
+
+        if (vitimas == 0)
+        {
+            winPanel.SetActive(true);
+            hasWon = true;
+        }
     }
+
+    public void Proxima()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    
     public void StartSpawnFill()
     {
         foreach (Transform cell in allCells)
@@ -66,6 +106,13 @@ public class GameControllerSlash : MonoBehaviour
             {
                 Fill tempFillComp = cell.GetChild(0).GetComponent<Fill>();
                 cell.GetComponent<Cell>().fill = tempFillComp;
+                if (cell.GetComponent<Cell>().fill.value == 3 ||
+                    cell.GetComponent<Cell>().fill.value == 4 ||
+                    cell.GetComponent<Cell>().fill.value == 5 ||
+                    cell.GetComponent<Cell>().fill.value == 6)
+                {
+                    vitimas++;
+                }
             }
         }
     }
