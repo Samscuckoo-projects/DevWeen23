@@ -34,8 +34,9 @@ public class Fill : MonoBehaviour
         }
         else if (hasKilled == false)
         {
-            if (transform.parent.GetChild(0) !=this.transform)
+            if (transform.parent.GetChild(0) != this.transform)
             {
+                
                 Destroy(transform.parent.GetChild(0).gameObject);
             }
 
@@ -45,11 +46,11 @@ public class Fill : MonoBehaviour
 
     public void Kill()
     {
-        Debug.Log("!double");
+        Debug.Log("matei");
     }
 
     public void EndEvil()
     {
-        
+        Debug.Log("Evil ended");
     }
 }
