@@ -165,6 +165,51 @@ public class Cell : MonoBehaviour
                         nextCell.fill = null;
                     }
                 }
+                else if (currentCell.fill.value == 3)
+                {
+                    if (nextCell.fill.value == 1)
+                    {
+                        nextCell.fill.Kill();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        currentCell.fill = nextCell.fill;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value == 2)
+                    {
+                        nextCell.fill.transform.parent = nextCell.up.transform;
+                        nextCell.up.fill = nextCell.fill;
+                        nextCell.fill = null;
+                        currentCell = nextCell;
+                    }
+                    else if (nextCell.fill.value == 6 ||
+                             nextCell.fill.value == 8)
+                    {
+                        nextCell.fill.transform.parent = currentCell.down.transform;
+                        nextCell.fill = null;
+                    }
+                }
+                else if (currentCell.fill.value == 5)
+                {
+                    if (nextCell.fill.value == 1)
+                    {
+                        nextCell.fill.EndEvil();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value == 2)
+                    {
+                        nextCell.fill.transform.parent = nextCell.up.transform;
+                        nextCell.up.fill = nextCell.fill;
+                        nextCell.fill = null;
+                        currentCell = nextCell;
+                    }
+                    else if (nextCell.fill.value == 6 ||
+                             nextCell.fill.value == 8)
+                    {
+                        nextCell.fill.transform.parent = currentCell.down.transform;
+                        nextCell.fill = null;
+                    }
+                }
             }
         }
         else
@@ -193,7 +238,6 @@ public class Cell : MonoBehaviour
                 }
             }
         }
-        
         if (currentCell.down == null) return;
         SlideUp(currentCell.down);
     }
@@ -248,7 +292,6 @@ public class Cell : MonoBehaviour
         if (currentCell.left == null) return;
         SlideRight(currentCell.left);
     }
-    
     void SlideDown(Cell currentCell)
     {
         if(currentCell.up == null) return;
@@ -299,7 +342,6 @@ public class Cell : MonoBehaviour
         if (currentCell.up == null) return;
         SlideDown(currentCell.up);
     }
-    
     void SlideLeft(Cell currentCell)
     {
         if(currentCell.right == null) return;

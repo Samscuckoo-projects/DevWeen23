@@ -20,6 +20,7 @@ public class Fill : MonoBehaviour
      8 = pneu
      9 = parede
      10 = Troncodilha
+     Móveis: 1, 2, 6, 8
      */
     [SerializeField] private float speed;
     private bool hasKilled;
