@@ -6,7 +6,6 @@ using System;
 public class GameControllerSlash : MonoBehaviour
 {
     public static GameControllerSlash instance;
-    public static int ticker;
     
     [SerializeField] private GameObject fillPrefab;
     [SerializeField] private Transform[] allCells;
@@ -35,17 +34,14 @@ public class GameControllerSlash : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            ticker = 0;
             slide("w");
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            ticker = 0;
             slide("d");
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            ticker = 0;
             slide("s");
         }
         if (Input.GetKeyDown(KeyCode.A))

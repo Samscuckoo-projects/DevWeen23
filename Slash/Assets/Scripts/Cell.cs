@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-
-    public bool isKiller = false;
     public Cell right;
     public Cell left;
     public Cell up;
@@ -17,16 +15,11 @@ public class Cell : MonoBehaviour
     private void OnEnable()
     {
         GameControllerSlash.slide += OnSlide;
-        
     }
-
-  
     private void OnDisable()
     {
         GameControllerSlash.slide -= OnSlide;
-        
     }
-    
     private void OnSlide(string whatWasSent)
     {
         if (whatWasSent == "w")
@@ -47,7 +40,7 @@ public class Cell : MonoBehaviour
             }
 
             Cell currentCell = this;
-            SlideRigth(currentCell);
+            SlideRight(currentCell);
         }
         if (whatWasSent == "s")
         {
@@ -70,7 +63,6 @@ public class Cell : MonoBehaviour
             SlideLeft(currentCell);
         }
     }
-
     void SlideUp(Cell currentCell)
     {
         if(currentCell.down == null) return;
@@ -84,19 +76,94 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                if (currentCell.fill.value == nextCell.fill.value)
+                if (currentCell.fill.value == 1)
                 {
-                   nextCell.fill.Kill();
-                   nextCell.fill.transform.parent = currentCell.transform;
-                   currentCell.fill = nextCell.fill;
-                   nextCell.fill = null;
+                    if (nextCell.fill.value == 2)
+                    {
+                        nextCell.fill.transform.parent = nextCell.up.transform;
+                        nextCell.up.fill = nextCell.fill;
+                        nextCell.fill = null;
+                        currentCell = nextCell;
+                    }
+                    else if (nextCell.fill.value == 6)
+                    {
+                        nextCell.fill.transform.parent = currentCell.down.transform;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value == 8)
+                    {
+                        nextCell.fill.EndEvil();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        nextCell.fill = null;
+                        
+                    }
                 }
-                else if(currentCell.down.fill != nextCell.fill)
+                else if (currentCell.fill.value == 2 ||
+                         currentCell.fill.value == 8 ||
+                         currentCell.fill.value == 9 ||
+                         currentCell.fill.value == 10)
                 {
-                    Debug.Log("!double");
-                    nextCell.fill.transform.parent = currentCell.down.transform;
-                    currentCell.down.fill = nextCell.fill;
-                    nextCell.fill = null;
+                    if (nextCell.fill.value == 1 ||
+                        nextCell.fill.value == 6 ||
+                        nextCell.fill.value == 8)
+                    {
+                        nextCell.fill.transform.parent = currentCell.down.transform;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value == 2)
+                    {
+                        nextCell.fill.transform.parent = nextCell.up.transform;
+                        nextCell.up.fill = nextCell.fill;
+                        nextCell.fill = null;
+                        currentCell = nextCell;
+                    }
+                }
+                else if (currentCell.fill.value == 4 ||
+                         currentCell.fill.value == 6)
+                {
+                    if (nextCell.fill.value == 1)
+                    {
+                        nextCell.fill.Kill();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        currentCell.fill = nextCell.fill;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value == 2)
+                    {
+                        nextCell.fill.transform.parent = nextCell.up.transform;
+                        nextCell.up.fill = nextCell.fill;
+                        nextCell.fill = null;
+                        currentCell = nextCell;
+                    }
+                    else if (nextCell.fill.value == 6 ||
+                             nextCell.fill.value == 8)
+                    {
+                        nextCell.fill.transform.parent = currentCell.down.transform;
+                        nextCell.fill = null;
+                    }
+                    
+                }
+                else if (currentCell.fill.value == 7)
+                {
+                    if (nextCell.fill.value == 1)
+                    {
+                        nextCell.fill.EndEvil();
+                        nextCell.fill.transform.parent = currentCell.transform;
+                        nextCell.fill = null;
+                    }
+                    else if (nextCell.fill.value == 2)
+                    {
+                        nextCell.fill.transform.parent = nextCell.up.transform;
+                        nextCell.up.fill = nextCell.fill;
+                        nextCell.fill = null;
+                        currentCell = nextCell;
+                    }
+                    else if (nextCell.fill.value == 6 ||
+                             nextCell.fill.value == 8)
+                    {
+                        nextCell.fill.transform.parent = currentCell.down.transform;
+                        nextCell.fill = null;
+                    }
                 }
             }
         }
@@ -110,11 +177,20 @@ public class Cell : MonoBehaviour
 
             if (nextCell.fill != null)
             {
-                nextCell.fill.transform.parent = currentCell.transform;
-                currentCell.fill = nextCell.fill;
-                nextCell.fill = null;
-                SlideUp(currentCell);
-                Debug.Log("Slide to empty");
+                if (nextCell.fill.value == 6 || nextCell.fill.value == 8 || nextCell.fill.value == 1)
+                {
+                    nextCell.fill.transform.parent = currentCell.transform;
+                    currentCell.fill = nextCell.fill;
+                    nextCell.fill = null;
+                    SlideUp(currentCell);
+                }
+                else if (nextCell.fill.value == 2)
+                {
+                    nextCell.fill.transform.parent = nextCell.up.transform;
+                    nextCell.up.fill = nextCell.fill;
+                    nextCell.fill = null;
+                    currentCell = nextCell;
+                }
             }
         }
         
@@ -122,7 +198,7 @@ public class Cell : MonoBehaviour
         SlideUp(currentCell.down);
     }
     
-    void SlideRigth(Cell currentCell)
+    void SlideRight(Cell currentCell)
     {
         if(currentCell.left == null) return;
         if (currentCell.fill != null)
@@ -164,13 +240,13 @@ public class Cell : MonoBehaviour
                 nextCell.fill.transform.parent = currentCell.transform;
                 currentCell.fill = nextCell.fill;
                 nextCell.fill = null;
-                SlideRigth(currentCell);
+                SlideRight(currentCell);
                 Debug.Log("Slide to empty");
             }
         }
         
         if (currentCell.left == null) return;
-        SlideRigth(currentCell.left);
+        SlideRight(currentCell.left);
     }
     
     void SlideDown(Cell currentCell)

@@ -22,19 +22,33 @@ public class Fill : MonoBehaviour
      10 = Troncodilha
      */
     [SerializeField] private float speed;
+    private bool hasKilled;
     private void Update()
     {
         if (transform.localPosition != Vector3.zero)
         {
-            
+            hasKilled = false;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition,
                 Vector3.zero, speed * Time.deltaTime);
+        }
+        else if (hasKilled == false)
+        {
+            if (transform.parent.GetChild(0) !=this.transform)
+            {
+                Destroy(transform.parent.GetChild(0).gameObject);
+            }
+
+            hasKilled = true;
         }
     }
 
     public void Kill()
     {
-
+        Debug.Log("!double");
     }
-    
+
+    public void EndEvil()
+    {
+        
+    }
 }
