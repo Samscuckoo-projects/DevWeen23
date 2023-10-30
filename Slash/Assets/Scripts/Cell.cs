@@ -183,7 +183,6 @@ public class Cell : MonoBehaviour
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
-                    SlideUp(currentCell);
                 }
             }
         }
@@ -310,7 +309,6 @@ public class Cell : MonoBehaviour
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
-                    SlideRight(currentCell);
                 }
             }
         }
@@ -437,7 +435,6 @@ public class Cell : MonoBehaviour
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
-                    SlideDown(currentCell);
                 }
             }
         }
@@ -564,7 +561,6 @@ public class Cell : MonoBehaviour
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
                     nextCell.fill = null;
-                    SlideLeft(currentCell);
                 }
             }
         }
