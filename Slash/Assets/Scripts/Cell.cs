@@ -82,7 +82,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.down)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     else if (nextCell.fill.value == 8)
                     {
@@ -99,7 +102,11 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.down)
+                        {
+                            nextCell.fill = null;
+                        }
+                        
                     }
                 }
                 else if (currentCell.fill.value is 4 or 6)
@@ -115,7 +122,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.down)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     
                 }
@@ -131,10 +141,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.down)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 5)
+                else if (currentCell.fill.value == 3)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -147,10 +160,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.down)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 3)
+                else if (currentCell.fill.value == 5)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -163,7 +179,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.down.transform;
                         currentCell.down.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.down)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
             }
@@ -182,7 +201,10 @@ public class Cell : MonoBehaviour
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
-                    nextCell.fill = null;
+                    if (nextCell != currentCell)
+                    {
+                        nextCell.fill = null;
+                    }
                 }
             }
         }
@@ -208,7 +230,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.left)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     else if (nextCell.fill.value == 8)
                     {
@@ -225,7 +250,11 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.left)
+                        {
+                            nextCell.fill = null;
+                        }
+                        
                     }
                 }
                 else if (currentCell.fill.value is 4 or 6)
@@ -241,7 +270,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.left)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     
                 }
@@ -257,10 +289,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.left)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 3)
+                else if (currentCell.fill.value == 5)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -273,10 +308,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.left)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 5)
+                else if (currentCell.fill.value == 3)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -289,7 +327,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.left.transform;
                         currentCell.left.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.left)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
             }
@@ -308,7 +349,10 @@ public class Cell : MonoBehaviour
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
-                    nextCell.fill = null;
+                    if (nextCell != currentCell)
+                    {
+                        nextCell.fill = null;
+                    }
                 }
             }
         }
@@ -334,7 +378,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.up)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     else if (nextCell.fill.value == 8)
                     {
@@ -351,7 +398,11 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.up)
+                        {
+                            nextCell.fill = null;
+                        }
+                        
                     }
                 }
                 else if (currentCell.fill.value is 4 or 6)
@@ -367,7 +418,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.up)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     
                 }
@@ -383,10 +437,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.up)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 5)
+                else if (currentCell.fill.value == 3)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -399,10 +456,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.up)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 3)
+                else if (currentCell.fill.value == 5)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -415,7 +475,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.up.transform;
                         currentCell.up.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.up)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
             }
@@ -434,7 +497,10 @@ public class Cell : MonoBehaviour
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
-                    nextCell.fill = null;
+                    if (nextCell != currentCell)
+                    {
+                        nextCell.fill = null;
+                    }
                 }
             }
         }
@@ -460,7 +526,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.right)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     else if (nextCell.fill.value == 8)
                     {
@@ -477,7 +546,11 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.right)
+                        {
+                            nextCell.fill = null;
+                        }
+                        
                     }
                 }
                 else if (currentCell.fill.value is 4 or 6)
@@ -493,7 +566,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.right)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                     
                 }
@@ -509,10 +585,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.right)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 3)
+                else if (currentCell.fill.value == 5)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -525,10 +604,13 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.right)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
-                else if (currentCell.fill.value == 5)
+                else if (currentCell.fill.value == 3)
                 {
                     if (nextCell.fill.value == 1)
                     {
@@ -541,7 +623,10 @@ public class Cell : MonoBehaviour
                     {
                         nextCell.fill.transform.parent = currentCell.right.transform;
                         currentCell.right.fill = nextCell.fill;
-                        nextCell.fill = null;
+                        if (nextCell != currentCell.right)
+                        {
+                            nextCell.fill = null;
+                        }
                     }
                 }
             }
@@ -560,7 +645,10 @@ public class Cell : MonoBehaviour
                 {
                     nextCell.fill.transform.parent = currentCell.transform;
                     currentCell.fill = nextCell.fill;
-                    nextCell.fill = null;
+                    if (nextCell != currentCell)
+                    {
+                        nextCell.fill = null;
+                    }
                 }
             }
         }
