@@ -47,14 +47,12 @@ public class Fill : MonoBehaviour
 
     public void Kill()
     {
-        Debug.Log("matei");
-        GameControllerSlash.instance.WinningCheck();
+        StartCoroutine(GameControllerSlash.instance.WinningCheck());
     }
 
     public IEnumerator EndEvil()
     {
         yield return new WaitForSeconds(1);
-        Debug.Log("Evil ended");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

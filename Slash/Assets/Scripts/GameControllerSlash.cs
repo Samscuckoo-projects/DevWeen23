@@ -78,16 +78,17 @@ public class GameControllerSlash : MonoBehaviour
         }
     }
 
-    public void WinningCheck()
+    public IEnumerator WinningCheck()
     {
         vitimas--;
         if (hasWon)
         {
-            return;
+            yield break;
         }
 
         if (vitimas == 0)
         {
+            yield return new WaitForSeconds(1);
             winPanel.SetActive(true);
             hasWon = true;
         }
